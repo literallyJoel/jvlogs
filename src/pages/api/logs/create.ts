@@ -41,7 +41,7 @@ export default async function handler(
 ) {
   const trpc = createCaller(createInnerTRPCContext({}));
 
-  const body = req.body as { appId: string; log: any };
+  const { body } = req as { appId: string; log: any };
   const appId = body.appId;
   const log = body.log;
   console.log("REQ: ", JSON.stringify(req.body));
