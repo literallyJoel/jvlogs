@@ -5,7 +5,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import jdvLogo from "@/assets/images/jdvlogo.png";
 import { Button } from "@/components/ui/button";
-import { SignOutButton, useUser } from "@clerk/nextjs";
+import { SignOutButton, useClerk, useUser } from "@clerk/nextjs";
 import LogTable from "@/components/LogTable";
 const ViewApp = () => {
   const user = useUser();
@@ -13,7 +13,17 @@ const ViewApp = () => {
   const { id } = router.query;
   const app = api.apps.getApps.useQuery({ appId: id as string });
   const logs = api.logs.getLogs.useQuery({ appId: id as string });
+  const clerk = useClerk();
+  //It's making me do this manually for some reason
+  if (!user?.isSignedIn) {
+    clerk.openSignIn();
+  }
 
+  if (user.isSignedIn && user.user?.id !== "user_2e2gEtDqxdu3Xx6YIGxZH9jYzbE") {
+    if (typeof window !== "undefined") {
+      window.location.href = "https://google.com";
+    }
+  }
   return (
     <>
       <Head>
