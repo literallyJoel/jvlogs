@@ -1,5 +1,5 @@
 import { type Table, flexRender } from "@tanstack/react-table";
-import { Log } from "./LogTable";
+import type { Log } from "./LogTable";
 import { memo } from "react";
 
 export function TableBody({

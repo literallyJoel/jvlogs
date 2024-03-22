@@ -6,8 +6,6 @@ import { useRouter } from "next/router";
 import jdvLogo from "@/assets/images/jdvlogo.png";
 import { Button } from "@/components/ui/button";
 import { SignOutButton, useUser } from "@clerk/nextjs";
-import { memo, useMemo, useReducer, useState } from "react";
-import { MemoizedTableBody, TableBody } from "./components/TableBody";
 import LogTable from "./components/LogTable";
 const ViewApp = () => {
   const user = useUser();

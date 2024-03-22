@@ -1,5 +1,4 @@
 //The above is because we're getting stuff from external servers and we can't control the types
-import { Log } from "@/pages/apps/[id]/components/LogTable";
 import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";

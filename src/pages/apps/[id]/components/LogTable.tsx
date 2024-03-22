@@ -1,6 +1,5 @@
 import {
   type FilterFn,
-  type FilterMeta,
   createColumnHelper,
   flexRender,
   getCoreRowModel,

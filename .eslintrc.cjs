@@ -41,6 +41,8 @@ const config = {
     "@typescript-eslint/no-explicit-any": "off",
     //Same as above
     "@typescript-eslint/no-unsafe-assignment": "off",
+    //All this serves to do is make it harder for me to copy text to the clipboard,
+    "@typescript-eslint/no-floating-promises": "off",
   },
 };
 module.exports = config;
