@@ -35,17 +35,14 @@ const verifyLog = (_log: any) => {
     return true;
   }
 };
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: Request, res: NextApiResponse) {
   const trpc = createCaller(createInnerTRPCContext({}));
 
-  const { body } = req as { appId: string; log: any };
+  const body = (await req.json()) as { appId: string; log: any };
   const appId = body.appId;
   const log = body.log;
-  console.log("REQ: ", JSON.stringify(req.body));
-  console.log("COE: ", JSON.stringify(body));
+  console.log("AppId: ", appId);
+  console.log("Log: ", log);
   if (!appId) {
     res.status(400).json({ message: "appId is required" });
     return;
