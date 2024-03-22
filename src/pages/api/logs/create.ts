@@ -3,6 +3,9 @@ import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";
 
+export const config = {
+  runtime: "nodejs",
+};
 const verifyLog = (_log: any) => {
   const log = _log as {
     date: string;
