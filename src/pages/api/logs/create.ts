@@ -42,7 +42,6 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   await NextCors(req, res, {
-    methods: ["POST"],
     origin: "*",
     optionsSuccessStatus: 200,
   });
