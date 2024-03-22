@@ -42,7 +42,7 @@ const verifyLog = (_log: any) => {
 function runMiddleware(
   req: NextApiRequest,
   res: NextApiResponse,
-  fn: function,
+  fn: Function,
 ) {
   return new Promise((resolve, reject) => {
     fn(req, res, (result: any) => {
