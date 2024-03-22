@@ -47,7 +47,8 @@ export default async function handler(
   const body = req.body as { appId: string; log: any };
   const appId = body.appId;
   const log = body.log;
-
+  console.log("appId ", appId);
+  console.log("log ", log);
   if (!appId) {
     res.status(400).json({ message: "appId is required" });
     return;
