@@ -2,7 +2,9 @@
 import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";
-import cors from "cors";
+import Cors from "cors";
+
+const cors = Cors({ methods: ["POST"] });
 
 const verifyLog = (_log: any) => {
   const log = _log as {
@@ -36,7 +38,27 @@ const verifyLog = (_log: any) => {
     return true;
   }
 };
-async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+function runMiddleware(
+  req: NextApiRequest,
+  res: NextApiResponse,
+  fn: function,
+) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  await runMiddleware(req, res, cors);
   const trpc = createCaller(createInnerTRPCContext({}));
 
   const body = req.body as { appId: string; log: any };
@@ -69,5 +91,3 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(500).json({ message: "Failed to create log" });
   }
 }
-
-export default cors()(handler);
