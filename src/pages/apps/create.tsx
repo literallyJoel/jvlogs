@@ -276,7 +276,7 @@ export default function Home() {
             <div className="flex w-1/2 flex-col items-center justify-center">
               <div className="group relative flex w-full cursor-pointer flex-col flex-col items-center justify-center gap-4 rounded-xl bg-white/10 p-4 text-white">
                 <h3 className="text-2xl font-bold">
-                  Your app couldn't be created
+                  Your app couldn&apos;t be created
                 </h3>
                 <div className="flex flex-col gap-12">
                   <div className="text-center">Please try again later.</div>

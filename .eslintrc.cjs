@@ -36,7 +36,7 @@ const config = {
       },
     ],
     //This gets thrown from inside the shadui components
-    " @typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     //There are a couple places where I use any explcitly on purpose
     "@typescript-eslint/no-explicit-any": "off",
     //Same as above

@@ -313,7 +313,6 @@ const LogTable = ({ logs }: props): JSX.Element => {
         {/* Here in the <table> equivalent element (surrounds all table head and data cells), we will define our CSS variables for column sizes */}
         <div
           {...{
-        
             className: "w-full border borer-lightgrey w-full",
             style: {
               ...columnSizeVars, //Define column sizes on the <table> element
@@ -324,15 +323,15 @@ const LogTable = ({ logs }: props): JSX.Element => {
           <div className="thead w-full">
             {table.getHeaderGroups().map((headerGroup) => (
               <div
+                key={headerGroup.id}
                 {...{
-                  key: headerGroup.id,
                   className: "w-full h-30 flex",
                 }}
               >
                 {headerGroup.headers.map((header) => (
                   <div
+                    key={header.id}
                     {...{
-                      key: header.id,
                       className: "border border-white p-1 relative",
                       style: {
                         width: `calc(var(--header-${header?.id}-size) * 1px)`,
