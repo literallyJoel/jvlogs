@@ -22,7 +22,7 @@ const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
       <Button className=" bg-transparent hover:bg-white">
-        {options.find((opt) => opt.value === value)?.label ?? "None"}
+        {options?.find((opt) => opt.value === value)?.label ?? "None"}
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="z-10 mt-3 rounded-md bg-white/20 p-2 backdrop-blur-md">
@@ -31,7 +31,7 @@ const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
         value={value}
         onValueChange={(e) => setValue(e.valueOf())}
       >
-        {options.map((option) => (
+        {options?.map((option) => (
           <DropdownMenuRadioItem
             key={`${option.value}`}
             className="p-1"

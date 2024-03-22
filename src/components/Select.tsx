@@ -27,7 +27,7 @@ export default function Select({ value, setValue, options }: props): JSX.Element
         <SelectItem value=" ">
           <Badge className="w-5/12 min-w-24 justify-center">All</Badge>
         </SelectItem>
-        {options.map((option) => (
+        {options?.map((option) => (
           <SelectItem key={`${option.value}`} value={option.value}>
             <Badge className="w-5/12 min-w-24 justify-center text-center">
               {option.label}

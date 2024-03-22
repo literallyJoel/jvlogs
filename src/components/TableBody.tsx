@@ -15,14 +15,14 @@ export default function TableBody({
         className: "w-full",
       }}
     >
-      {table.getRowModel().rows.map((row) => (
+      {table?.getRowModel().rows.map((row) => (
         <div
           key={row.id}
           {...{
             className: "flex w-full",
           }}
         >
-          {row.getVisibleCells().map((cell) => {
+          {row?.getVisibleCells().map((cell) => {
             return (
               <div
                 key={cell.id}

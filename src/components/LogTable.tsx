@@ -277,7 +277,7 @@ const LogTable = ({ logs }: props): JSX.Element => {
             then convert back to an array and map to get the correct format.
             */
             options={Array.from(
-              new Set(logs.map((log) => log.date.toLocaleString())),
+              new Set(logs?.map((log) => log.date.toLocaleString())),
             ).map((date) => ({
               label: date.replace(",", "\n"),
               value: date,
@@ -302,7 +302,7 @@ const LogTable = ({ logs }: props): JSX.Element => {
             Convert the logs to an array of routes, convert to a set to remove dupes,
             then convert back to an array and map to get the correct format.
             */
-            options={Array.from(new Set(logs.map((log) => log.route))).map(
+            options={Array.from(new Set(logs?.map((log) => log.route))).map(
               (route) => ({ label: route, value: route }),
             )}
           />
@@ -320,14 +320,14 @@ const LogTable = ({ logs }: props): JSX.Element => {
           }}
         >
           <div className="thead w-full">
-            {table.getHeaderGroups().map((headerGroup) => (
+            {table?.getHeaderGroups().map((headerGroup) => (
               <div
                 key={headerGroup.id}
                 {...{
                   className: "w-full h-30 flex",
                 }}
               >
-                {headerGroup.headers.map((header) => (
+                {headerGroup?.headers.map((header) => (
                   <div
                     key={header.id}
                     {...{
