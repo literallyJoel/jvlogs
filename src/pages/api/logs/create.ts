@@ -2,9 +2,7 @@
 import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";
-import Cors from "cors";
-
-const cors = Cors({ methods: ["POST"] });
+import NextCors from "nextjs-cors";
 
 const verifyLog = (_log: any) => {
   const log = _log as {
@@ -39,26 +37,15 @@ const verifyLog = (_log: any) => {
   }
 };
 
-function runMiddleware(
-  req: NextApiRequest,
-  res: NextApiResponse,
-  fn: Function,
-) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result: any) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-
-      return resolve(result);
-    });
-  });
-}
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  await runMiddleware(req, res, cors);
+  await NextCors(req, res, {
+    methods: ["POST"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
   const trpc = createCaller(createInnerTRPCContext({}));
 
   const body = req.body as { appId: string; log: any };
