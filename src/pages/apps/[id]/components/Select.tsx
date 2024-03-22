@@ -2,9 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import {
   Select as ShadSelect,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -30,7 +28,7 @@ export function Select({ value, setValue, options }: props): JSX.Element {
           <Badge className="w-5/12 min-w-24 justify-center">All</Badge>
         </SelectItem>
         {options.map((option) => (
-          <SelectItem value={option.value}>
+          <SelectItem key={`${option.value}`} value={option.value}>
             <Badge className="w-5/12 min-w-24 justify-center text-center">
               {option.label}
             </Badge>

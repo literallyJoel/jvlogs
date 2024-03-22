@@ -1,4 +1,4 @@
-import { Table, flexRender } from "@tanstack/react-table";
+import { type Table, flexRender } from "@tanstack/react-table";
 import { Log } from "./LogTable";
 import { memo } from "react";
 
@@ -17,16 +17,16 @@ export function TableBody({
     >
       {table.getRowModel().rows.map((row) => (
         <div
+          key={row.id}
           {...{
-            key: row.id,
             className: "flex w-full",
           }}
         >
           {row.getVisibleCells().map((cell) => {
             return (
               <div
+                key={cell.id}
                 {...{
-                  key: cell.id,
                   className: `border border-white p-1 w-full ${cell.column.id === "message" ? "text-left hover:bg-white/30 cursor-pointer" : "text-center"}`,
                   style: {
                     width: `calc(var(--col-${cell.column.id}-size) * 1px)`,

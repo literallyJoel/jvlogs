@@ -24,7 +24,7 @@ export const Pagination = ({
       return (
         <>
           {Array.from({ length: totalPages }, (_, i) => (
-            <PaginationItem>
+            <PaginationItem key={`pag${i}`}>
               <PaginationLink
                 className={page === i ? "text-red-500" : ""}
                 onClick={() => {
@@ -41,7 +41,7 @@ export const Pagination = ({
       return (
         <>
           {Array.from({ length: 3 }, (_, i) => (
-            <PaginationItem>
+            <PaginationItem key={`pag${i}`}>
               <PaginationLink
                 className={i === page ? "text-red-500" : ""}
                 onClick={() => setPage(i)}
@@ -63,7 +63,7 @@ export const Pagination = ({
           </PaginationItem>
 
           {Array.from({ length: 3 }, (_, i) => (
-            <PaginationItem>
+            <PaginationItem key={`pag${totalPages - 1 - i}`}>
               <PaginationLink
                 className={page === totalPages - 1 - i ? "text-red-500" : ""}
                 onClick={() => setPage(totalPages - 1 - i)}

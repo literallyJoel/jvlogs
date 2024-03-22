@@ -1,7 +1,6 @@
 import {
-  FilterFn,
-  FilterMeta,
-  Row,
+  type FilterFn,
+  type FilterMeta,
   createColumnHelper,
   flexRender,
   getCoreRowModel,
@@ -45,7 +44,6 @@ const LogTable = ({ logs }: props): JSX.Element => {
     row,
     columnId: string,
     filterValue: any,
-    addMeta?: (meta: FilterMeta) => void,
   ): boolean => {
     const provided: Date = row.getValue(columnId);
     const filterDate: string = filterValue;
@@ -136,9 +134,8 @@ const LogTable = ({ logs }: props): JSX.Element => {
   }, [routeFilter]);
   const columnSizeVars = useMemo(() => {
     const headers = table.getFlatHeaders();
-    const colSizes: { [key: string]: number } = {};
-    for (let i = 0; i < headers.length; i++) {
-      const header = headers[i]!;
+    const colSizes: Record<string, number> = {};
+    for (const header of headers) {
       colSizes[`--header-${header.id}-size`] = header.getSize();
       colSizes[`--col-${header.column.id}-size`] = header.column.getSize();
     }
@@ -316,6 +313,7 @@ const LogTable = ({ logs }: props): JSX.Element => {
         {/* Here in the <table> equivalent element (surrounds all table head and data cells), we will define our CSS variables for column sizes */}
         <div
           {...{
+        
             className: "w-full border borer-lightgrey w-full",
             style: {
               ...columnSizeVars, //Define column sizes on the <table> element

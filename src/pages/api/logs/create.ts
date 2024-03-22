@@ -1,4 +1,3 @@
-//@ts-nocheck
 //The above is because we're getting stuff from external servers and we can't control the types
 import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";

@@ -1,4 +1,3 @@
-//@ts-nocheck
 //We do this because this component specifically accepts any types
 import { Button } from "@/components/ui/button";
 import {
