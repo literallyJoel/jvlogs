@@ -143,12 +143,15 @@ export default function Home() {
               <div
                 className="group relative flex max-w-xs cursor-pointer flex-col flex-col items-center justify-center gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
                 onClick={() => {
-                  navigator.clipboard.writeText(appName).then(() => {
-                    setClipboardSuccess(true);
-                    setTimeout(() => {
-                      setClipboardSuccess(false);
-                    }, 2000);
-                  });
+                  navigator.clipboard
+                    .writeText(appName)
+                    .then(() => {
+                      setClipboardSuccess(true);
+                      setTimeout(() => {
+                        setClipboardSuccess(false);
+                      }, 2000);
+                    })
+                    .catch((err) => console.log(err));
                 }}
               >
                 <h3 className="text-2xl font-bold">Name</h3>
@@ -164,12 +167,15 @@ export default function Home() {
                 className="group relative flex max-w-xs cursor-pointer flex-col flex-col  items-center justify-center gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
                 //Add the id to clipboard onclick
                 onClick={() => {
-                  navigator.clipboard.writeText(id).then(() => {
-                    setClipboardSuccess(true);
-                    setTimeout(() => {
-                      setClipboardSuccess(false);
-                    }, 2000);
-                  });
+                  navigator.clipboard
+                    .writeText(id)
+                    .then(() => {
+                      setClipboardSuccess(true);
+                      setTimeout(() => {
+                        setClipboardSuccess(false);
+                      }, 2000);
+                    })
+                    .catch((e) => console.log(e));
                 }}
               >
                 <div className="invisible absolute -bottom-9 rounded-md bg-white/10 p-1 tracking-tight group-hover:visible ">
@@ -209,11 +215,12 @@ export default function Home() {
                   </code>
                   <div>with the following request body format</div>
                   <div>{"{"}</div>
-                  <div>&nbsp; appID: "{id}"</div>
+                  <div>&nbsp; appID: &quot;{id}&quot;</div>
                   <div>&nbsp; log: {"{"}</div>
                   <div>&nbsp;&nbsp; date: [string]</div>
                   <div>
-                    &nbsp;&nbsp; type: ["log" | "error" | "debug" | "warning"]
+                    &nbsp;&nbsp; type: [&quot;log&quot; | &quot;error&quot; |
+                    &quot;debug&quot; | &quot;warning&quot;]
                   </div>
                   <div>&nbsp;&nbsp; route: [string]</div>
                   <div>&nbsp;&nbsp; message: [string]</div>

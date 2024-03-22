@@ -1,8 +1,9 @@
+//@ts-nocheck
+//We do this because this component specifically accepts any types
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
@@ -12,7 +13,9 @@ import React from "react";
 
 interface props {
   value: any;
+
   setValue: React.Dispatch<React.SetStateAction<any>>;
+
   options: { label: JSX.Element | string; value: any }[];
 }
 
@@ -30,7 +33,11 @@ export const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
         onValueChange={(e) => setValue(e.valueOf())}
       >
         {options.map((option) => (
-          <DropdownMenuRadioItem className="p-1" value={option.value}>
+          <DropdownMenuRadioItem
+            key={`${option.value}`}
+            className="p-1"
+            value={option.value}
+          >
             {option.label}
           </DropdownMenuRadioItem>
         ))}
