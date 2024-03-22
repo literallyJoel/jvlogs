@@ -5,6 +5,7 @@ export default authMiddleware({
 });
 
 export const config = {
+  runtime: "nodejs",
   matcher: [
     // Exclude files with a "." followed by an extension, which are typically static files.
     // Exclude files in the _next directory, which are Next.js internals.
