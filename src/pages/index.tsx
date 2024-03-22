@@ -17,7 +17,7 @@ export default function Home() {
 
   if (user.isSignedIn && user.user?.id !== "user_2e2gEtDqxdu3Xx6YIGxZH9jYzbE") {
     if (typeof window !== "undefined") {
-      window.location.href = "https://google.com";
+      window.location.href = "https://jdvivian.co.uk/message/unready;
     }
   }
   return (

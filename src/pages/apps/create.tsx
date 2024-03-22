@@ -22,6 +22,11 @@ export default function Home() {
     clerk.openSignIn();
   }
 
+  if (user.isSignedIn && user.user?.id !== "user_2e2gEtDqxdu3Xx6YIGxZH9jYzbE") {
+    if (typeof window !== undefined) {
+      window.location.href = "https://jdvivian.co.uk/message/unready";
+    }
+  }
   const validateInput = (): void => {
     const isValid = appName.length >= 3;
     setIsInputValid(isValid);
