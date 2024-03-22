@@ -3,6 +3,9 @@ import { env } from "@/env";
 import { appRouter } from "@/server/api/root";
 import { createTRPCContext } from "@/server/api/trpc";
 
+export const config = {
+  runtime: "nodejs",
+};
 // export API handler
 export default createNextApiHandler({
   router: appRouter,
