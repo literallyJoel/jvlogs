@@ -13,7 +13,7 @@ import { useEffect, useMemo, useState } from "react";
 import TableBody, { MemoizedTableBody } from "./TableBody";
 import Dropdown from "./Dropdown";
 import Select from "./Select";
-import IoClose from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
 import Pagination from "./Pagination";
 import Editor from "@monaco-editor/react";
 import { Button } from "@/components/ui/button";
