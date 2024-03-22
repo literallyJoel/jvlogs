@@ -1,4 +1,5 @@
 //The above is because we're getting stuff from external servers and we can't control the types
+import { Log } from "@/pages/apps/[id]/components/LogTable";
 import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -41,8 +42,9 @@ export default async function handler(
 ) {
   const trpc = createCaller(createInnerTRPCContext({}));
 
-  const appId = req.body.appId;
-  const log = req.body.log;
+  const body = req.body as { appId: string; log: any };
+  const appId = body.appId;
+  const log = body.log;
 
   if (!appId) {
     res.status(400).json({ message: "appId is required" });
