@@ -3,9 +3,6 @@ import { createCaller } from "@/server/api/root";
 import { createInnerTRPCContext } from "@/server/api/trpc";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export const config = {
-  runtime: "nodejs",
-};
 const verifyLog = (_log: any) => {
   const log = _log as {
     date: string;
@@ -47,8 +44,8 @@ export default async function handler(
   const body = req.body as { appId: string; log: any };
   const appId = body.appId;
   const log = body.log;
-  console.log("appId ", appId);
-  console.log("log ", log);
+  console.log("REQ: ", JSON.stringify(req.body));
+  console.log("COE: ", JSON.stringify(body));
   if (!appId) {
     res.status(400).json({ message: "appId is required" });
     return;
