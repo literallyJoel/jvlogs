@@ -13,7 +13,7 @@ interface props {
   options: { label: JSX.Element | string; value: any }[];
 }
 
-export function Select({ value, setValue, options }: props): JSX.Element {
+export default function Select({ value, setValue, options }: props): JSX.Element {
   return (
     <ShadSelect value={value} onValueChange={setValue}>
       <SelectTrigger className="border-none bg-transparent">

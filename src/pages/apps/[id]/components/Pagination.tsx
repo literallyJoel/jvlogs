@@ -14,7 +14,7 @@ interface props {
   totalPages: number;
 }
 
-export const Pagination = ({
+const Pagination = ({
   page,
   setPage,
   totalPages,
@@ -98,3 +98,5 @@ export const Pagination = ({
     </ShadPagination>
   );
 };
+
+export default Pagination;

@@ -18,7 +18,7 @@ interface props {
   options: { label: JSX.Element | string; value: any }[];
 }
 
-export const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
+const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
   <DropdownMenu>
     <DropdownMenuTrigger asChild>
       <Button className=" bg-transparent hover:bg-white">
@@ -44,3 +44,5 @@ export const Dropdown = ({ value, setValue, options }: props): JSX.Element => (
     </DropdownMenuContent>
   </DropdownMenu>
 );
+
+export default Dropdown;

@@ -2,7 +2,7 @@ import { type Table, flexRender } from "@tanstack/react-table";
 import type { Log } from "./LogTable";
 import { memo } from "react";
 
-export function TableBody({
+export default function TableBody({
   table,
   openModal,
 }: {
