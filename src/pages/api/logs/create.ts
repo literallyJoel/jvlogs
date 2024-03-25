@@ -5,7 +5,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 
 const verifyLog = (_log: any) => {
-  const log = JSON.parse(_log) as {
+  const log = (_log instanceof String ? JSON.parse(_log) : _log) as {
     date: string;
     type: string;
     route: string;
