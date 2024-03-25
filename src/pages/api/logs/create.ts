@@ -50,21 +50,22 @@ export default async function handler(
   const body = req.body as { appId: string; log: any };
   const appId = body.appId;
   const log = body.log;
-  console.log("REQ: ", JSON.stringify(req.body));
-  console.log("COE: ", JSON.stringify(body));
   if (!appId) {
+    console.log("appId not provided");
     res.status(400).json({ message: "appId is required" });
     return;
   }
   const app = await trpc.apps.getApps({ appId: appId });
 
   if (!app || app.length === 0) {
+    console.log("App not found");
     res.status(400).json({ message: "App not found" });
     return;
   }
 
   const missing = verifyLog(log);
   if (missing !== true) {
+    console.log(`${missing.join(", ")} is required`);
     res.status(400).json({ message: `${missing.join(", ")} is required` });
     return;
   }
