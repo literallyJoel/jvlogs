@@ -11,6 +11,8 @@ const verifyLog = (_log: any) => {
     route: string;
     message: string;
   };
+  console.log("_LOG: ", _log);
+  console.log("LOG: ", log);
   const missing = [];
   if (!log) {
     missing.push("log");
