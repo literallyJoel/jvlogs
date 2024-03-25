@@ -5,14 +5,13 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 
 const verifyLog = (_log: any) => {
-  const log = (_log instanceof String ? JSON.parse(_log) : _log) as {
+  const log = _log as {
     date: string;
     type: string;
     route: string;
     message: string;
   };
-  console.log("_LOG: ", _log);
-  console.log("LOG: ", log);
+
   const missing = [];
   if (!log) {
     missing.push("log");
@@ -51,7 +50,11 @@ export default async function handler(
 
   const body = req.body as { appId: string; log: any };
   const appId = body.appId;
-  const log = body.log;
+  let log = body.log;
+  if (typeof log === "string") {
+    log = JSON.parse(log);
+  }
+
   if (!appId) {
     console.log("appId not provided");
     res.status(400).json({ message: "appId is required" });
